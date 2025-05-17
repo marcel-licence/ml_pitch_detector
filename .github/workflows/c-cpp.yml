@@ -40,6 +40,6 @@ jobs:
                 name: ML_SynthTools
               - source-url: https://github.com/marcel-licence/ML_SynthTools_Lib.git
                 name: ML_SynthTools_Lib
-              - source-url: 
+              - source-url: https://github.com/adafruit/Adafruit_NeoPixel.git
                 name: Adafruit_NeoPixel
                 version: 1.12.2
