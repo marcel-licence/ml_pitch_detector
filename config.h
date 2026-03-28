@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Marcel Licence
+ * Copyright (c) 2026 Marcel Licence
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,15 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Dieses Programm ist Freie Software: Sie k�nnen es unter den Bedingungen
+ * Dieses Programm ist Freie Software: Sie können es unter den Bedingungen
  * der GNU General Public License, wie von der Free Software Foundation,
  * Version 3 der Lizenz oder (nach Ihrer Wahl) jeder neueren
- * ver�ffentlichten Version, weiter verteilen und/oder modifizieren.
+ * veröffentlichten Version, weiter verteilen und/oder modifizieren.
  *
- * Dieses Programm wird in der Hoffnung bereitgestellt, dass es n�tzlich sein wird, jedoch
- * OHNE JEDE GEW�HR,; sogar ohne die implizite
- * Gew�hr der MARKTF�HIGKEIT oder EIGNUNG F�R EINEN BESTIMMTEN ZWECK.
- * Siehe die GNU General Public License f�r weitere Einzelheiten.
+ * Dieses Programm wird in der Hoffnung bereitgestellt, dass es nützlich sein wird, jedoch
+ * OHNE JEDE GEWÄHR,; sogar ohne die implizite
+ * Gewähr der MARKTFÄHIGKEIT oder EIGNUNG FÜR EINEN BESTIMMTEN ZWECK.
+ * Siehe die GNU General Public License für weitere Einzelheiten.
  *
  * Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
  * Programm erhalten haben. Wenn nicht, siehe <https://www.gnu.org/licenses/>.
@@ -33,9 +33,7 @@
  * @author Marcel Licence
  * @date 06.09.2023
  *
- * @brief This file contains the project configuration
- * - Audio configuration: SAMPLE_RATE, SAMPLE_BUFFER_SIZE
- * - Communication Settings: SERIAL_BAUDRATE
+ * @brief   This file contains the project configuration
  */
 
 
@@ -48,14 +46,9 @@
 #define CONFIG_H_
 
 
+#ifndef WS2812_PIN
 #define WS2812_PIN  21
-
-
-//#define BOARD_ML_SYNTH_V2 /* my second DIY PCB */
-//#define BOARD_ESP32_AUDIO_KIT_AC101 /* this configures the project to run on the ESP32 audio kit with the AC101 codec */
-#define BOARD_ESP32_AUDIO_KIT_ES8388 /* this configures the project to run on the ESP32 audio kit with the ES8388 codec - you may configure the board file as-well */
-
-#include <ml_boards.h>
+#endif
 
 
 /* use the following to generate a test sound to test your setup */
@@ -71,5 +64,26 @@
 #define STATUS_SIMPLE
 
 
-#endif /* CONFIG_H_ */
+#include "config/config_blackpill_f411ce.h"
+#include "config/config_black_f407ve.h"
+#include "config/config_bluepill_f103c8.h"
+#include "config/config_blue_f103ve.h"
+#include "config/config_daisy_seed.h"
+#include "config/config_disco_f407vg.h"
+#include "config/config_esp32.h"
+#include "config/config_esp32s2.h"
+#include "config/config_esp8266.h"
+#include "config/config_generic_f407vgtx.h"
+#include "config/config_rp2040.h"
+#include "config/config_rp2350.h"
+#include "config/config_teensy.h"
+#include "config/config_xiao_m0.h"
 
+/*
+ * include the board configuration
+ * there you will find the most hardware depending pin settings
+ */
+#include <ml_boards.h> /* requires the ML_Synth library:  https://github.com/marcel-licence/ML_SynthTools */
+
+
+#endif /* CONFIG_H_ */
