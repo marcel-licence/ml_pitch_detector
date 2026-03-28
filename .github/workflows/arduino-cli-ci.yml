@@ -166,6 +166,46 @@ jobs:
             options: ""
             manual_only: true
 
+        exclude:
+          - board:
+              name: "ESP32S2 Dev Module"
+
+          - board:
+              name: "LOLIN S2 Mini"
+
+          - board:
+              name: "ESP32S3 Dev Module"
+
+          - board:
+              name: "ESP32C3 Dev Module"
+
+          - board:
+              name: "XIAO_ESP32C3"
+
+          - board:
+              name: "Generic ESP8266 Module"
+
+          - board:
+              name: "Raspberry Pi Pico"
+
+          - board:
+              name: "Raspberry Pi Pico 2"
+
+          - board:
+              name: "Pimoroni PicoPlus2"
+
+          - board:
+              name: "Seeeduino XIAO (SAMD21)"
+
+          - board:
+              name: "BlackPill F411CE"
+
+          - board:
+              name: "Daisy Seed"
+
+          - board:
+              name: "Teensy 4.1"
+
     steps:
     - uses: actions/checkout@v4
       with:
