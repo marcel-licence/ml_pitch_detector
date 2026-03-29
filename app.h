@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Marcel Licence
+ * Copyright (c) 2026 Marcel Licence
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,39 +29,30 @@
  */
 
 /**
- * @file midi_callbacks.ino
+ * @file app.h
  * @author Marcel Licence
- * @date 06.09.2023
+ * @date 08.03.2026
  *
- * @brief This file contains the MIDI callbacks
- * please link the functions in z_config.ino (in your MIDI mapping)
+ * @brief Declarations of the app
  */
+ 
+
+#ifndef APP_H_
+#define APP_H_
 
 
-/*
- * MIDI callbacks
- */
-inline void AppBtn(uint8_t param, uint8_t value)
-{
-    if (value > 0)
-    {
-        switch (param)
-        {
-#ifdef BOARD_ESP32_AUDIO_KIT_AC101
+#include <stdint.h>
 
-        case 0:
-            ac101_setSourceMic();
-            break;
-        case 1:
-            ac101_setSourceLine();
-            break;
-#endif
-        }
-    }
-}
 
-void AppSetInputGain(uint8_t unused __attribute__((unused)), uint8_t value)
-{
-    inputGain = log2fromU7(value, -16, 5);
-    Status_ValueChangedFloat("InputGain", inputGain);
-}
+void App_Setup(void);
+void App_Loop(void);
+
+void App_Setup1(void);
+void App_Loop1(void);
+
+
+void AppBtn(uint8_t param, uint8_t value);
+void AppSetInputGain(uint8_t unused __attribute__((unused)), uint8_t value);
+
+
+#endif /* APP_H_ */
