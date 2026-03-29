@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Marcel Licence
+ * Copyright (c) 2026 Marcel Licence
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,6 +45,11 @@
 #ifdef __CDT_PARSER__
 #include <cdt.h>
 #endif
+
+
+#include "config.h"
+
+#include "app.h"
 
 
 /*
@@ -147,16 +152,23 @@ struct midiControllerMapping edirolMapping[] =
 /* in this case no synthesizer module is connected, note on, off will be ignored */
 struct midiMapping_s midiMapping =
 {
-    NULL,
-    NULL,
-    NULL,
-    NULL, //Synth_PitchBend,
-    NULL, //Synth_ModulationWheel,
-    NULL, /* assign program change callback here! */
-    NULL, //Synth_RealTimeMsg,
-    NULL, //Synth_SongPosition,
-    edirolMapping,
-    sizeof(edirolMapping) / sizeof(edirolMapping[0]),
+    .rawMsg = NULL,
+    .noteOn = NULL,
+    .noteOff = NULL,
+    .pitchBend = NULL,
+    .modWheel = NULL,
+    .programChange = NULL,
+#ifdef MIDI_CHANNEL_PRESSURE_ENABLED
+    .channelPressure = NULL,
+#endif
+    .rttMsg = NULL,
+    .songPos = NULL,
+    .controlMapping = edirolMapping,
+    .mapSize = sizeof(edirolMapping) / sizeof(edirolMapping[0]),
+#ifdef MIDI_MAP_FLEX_ENABLED
+    .controlMapping_flex = NULL,
+    .mapSize_flex = NULL,
+#endif
 };
 
 #ifdef MIDI_VIA_USB_ENABLED
